@@ -11,7 +11,11 @@ function Usuario(){
 let laHora = horas.value;
 let losMinutos = minutos.value;
 let losSegundos = segundos.value;
+if(minutos.value > 9,segundos.value > 9){
 escribeUsuario.textContent = `${laHora}:${losMinutos}:${losSegundos}`;
+}else{
+    escribeUsuario.textContent = `${laHora}:0${losMinutos}:0${losSegundos}`;
+}
 }else{
     alert("Debe introducir datos entre 0 y 59 minutos y segundos")
     minutos.value = ""

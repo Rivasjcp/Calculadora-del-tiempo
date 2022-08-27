@@ -6,17 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora del tiempo</title>
     <script src="master.js" defer></script>
-</head>
+    <link rel="shortcut icon" href="images/paso-del-tiempo.png"></head>
 <body>
     <h1>Calculadora del tiempo</h1>
-    <p>Introduce las horas:</p>
-    <input type="number" name="horas" id="horas" placeholder="">
-    <p>Introduce los minutos:</p>
-    <input type="number" name="minutos" id="minutos" placeholder="">
-    <p>Introduce los segundos</p>
-    <input type="number" name="segundos" id="segundos" placeholder="">
-    <button class="botonResult">Introducir valores</button>
-    <p class="tiempoUsuario" ></p>
-
+    <div style="display: flex; flex-direction:row">
+        <div>
+            <p>Introduce las horas:</p>
+            <input type="number" name="horas" id="horas" placeholder="">
+            <p>Introduce los minutos:</p>
+            <input type="number" name="minutos" id="minutos" placeholder="">
+            <p>Introduce los segundos:</p>
+            <input type="number" name="segundos" id="segundos" placeholder="">
+            <button class="botonResult">Introducir valores</button>
+            <p class="tiempoUsuario" ></p>
+        </div>
+        <div style="margin-left: 100px;">
+            <p>Introduce las horas a sumar:</p>
+            <input type="number" name="horas" id="sumaHoras" placeholder="">
+            <p>Introduce los minutos a sumar:</p>
+            <input type="number" name="minutos" id="sumaMinutos" placeholder="">
+            <p>Introduce los segundos a sumar:</p>
+            <input type="number" name="segundos" id="sumaSegundos" placeholder="">
+            <button class="sumaBoton">Sumar valores</button>
+            <p class="tiempoSumado"></p>
+        </div>
+    </div>
 </body>
 </html>

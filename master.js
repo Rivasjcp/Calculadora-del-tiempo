@@ -10,131 +10,70 @@ Nota a investigar como sumar numeros y que se transformen en horas minutos y seg
 - Si tengo 70 segundos debo tomar un condicional donde tenga 
 */
 
+const showTime = document.getElementById('showtime-input');
+const showTimePlus = document.getElementById('writeTime');
+const transBoton = document.querySelector('.transforSeg'); // Tranformar segundos a horas
+// const botonValores = document.getElementById("botonResult")
+const timeInput = document.getElementById('time-input'); // Input de tiempo
+const tranSeg = document.getElementById("sumaSegundos");
+const botonSuma = document.getElementById("sumalas");
 
-let minutos = document.getElementById("minutos");
-let segundos = document.getElementById("segundos");
-let horas = document.getElementById("horas");
+const getTimeInputValue = () => new Date(`August 31, 2022 ${timeInput.value}`);
 
-const escribeUsuario = document.querySelector(".tiempoUsuario");
-const valoresUsuario = document.querySelector(".botonResult");
+// botonValores.addEventListener("click",handleSetValues)
 
-// const sumarMinutos = document.getElementById("sumaMinutos");
-const sumarSegundos = document.getElementById("sumaSegundos");
-// const sumarHoras = document.getElementById("sumaHoras");
- const escribirTransformar = document.querySelector(".escribirtrans"); // Para mostrar
- const transBoton = document.querySelector(".transforSeg") // Boton de suma
+  const horas = () => getTimeInputValue().getHours();
+  const minutos = () => getTimeInputValue().getMinutes();
+  const segundos = () => getTimeInputValue().getSeconds();
 
+  let mostrar = () => [horas(),minutos(),segundos()]
+  setInterval(function(){console.log(mostrar())},1000);
+//  setInterval(function(){console.log(horas())},1000);
 
+transBoton.addEventListener('click', TransformarSeg);
 
-valoresUsuario.addEventListener('click',Usuario)
-
- function Usuario(){
-     if(minutos.value >= 0 && minutos.value <= 59){
-         if(segundos.value >= 0 && segundos.value <= 59){
-            var laHora = horas.value;
-            var losMinutos = minutos.value;
-            var losSegundos = segundos.value;
-
-            laHora = (laHora < 10)? `0${laHora}` : laHora;
-            losMinutos = (losMinutos < 10)? `0${losMinutos}` : losMinutos;
-            losSegundos = (losSegundos < 10)? `0${losSegundos}` : losSegundos;
-            escribeUsuario.textContent = `Hora Introducida: ${laHora}:${losMinutos}:${losSegundos}`;
-            console.log(laHora);
-            console.log(losMinutos);
-            console.log(losSegundos);
-         }else{
-             alert("Debe introducir datos entre 0 y 59 minutos y segundos")
-             minutos.value = ""
-             segundos.value = ""
-             escribeUsuario.textContent = ""
-         }
-     }else{
-         alert("Debe introducir datos entre 0 y 59 minutos y segundos")
-         minutos.value = ""
-         segundos.value = ""
-         escribeUsuario.textContent = ""
-     }
-     return `${laHora}:${losMinutos}:${losSegundos}`;
- }
-
-console.log(Usuario())
-
-transBoton.addEventListener('click',TransformarSeg)
-
-function TransformarSeg(){
-    var sapo = sumarSegundos.value;
-    if(sapo > 0){
-        var segAHora = Math.floor(sapo / 3600);
-        segAHora = (segAHora < 10)? '0' + segAHora : segAHora;
-        var segAmin = Math.floor((sapo / 60) % 60);
-        segAmin = (segAmin < 10)? '0' + segAmin : segAmin;
-        var seg = sapo % 60;
-        seg = (seg < 10)? '0' + seg : seg;
-        escribirTransformar.textContent = `Hora Transformada: ${segAHora}:${segAmin}:${seg}`;
-    }else{
-        alert("Los valores no pueden ser negativos");
-        sumarSegundos.textContent = "";
-        escribirTransformar.textContent = "";
-    }
-
+function TransformarSeg() {
+  const seconds = tranSeg.value;
+  if (seconds => 0) {
+    let segAHora = Math.floor(seconds / 3600);
+    segAHora = segAHora < 10 ? '0' + segAHora : segAHora;
+    let segAmin = Math.floor((seconds / 60) % 60);
+    segAmin = segAmin < 10 ? '0' + segAmin : segAmin;
+    let seg = seconds % 60;
+    seg = seg < 10 ? '0' + seg : seg;
+    showTime.value = `${segAHora}:${segAmin}:${seg}`;
+  } else {
+    alert('Los valores no pueden ser negativos');
+    sumarSegundos.textContent = '';
+    escribirTransformar.textContent = '';
+  }
 }
 
+const getTimeInputValue2 = () => new Date(`August 31, 2022 ${showTime.value}`);
+const getTimeInputValue3 = () => new Date("August 31, 2022 00:00:00");
+
+botonSuma.addEventListener("click",function(){
+  let laSuma = () => new Date(getTimeInputValue().getTime() + getTimeInputValue2().getTime() - getTimeInputValue3().getTime());
+  
+  showTimePlus.textContent = `${laSuma().getHours()}:${laSuma().getMinutes()}:${laSuma().getSeconds()}`
+  setInterval(function(){console.log(showTimePlus.value)},1000);
+})
 
 
-// valorDeSuma.addEventListener('click',sumaUsuario)
 
-// function segundosAMinutos(){
-//     var losSeg = sumarSegundos.value;
-//     var losMin = Math.floor((losSeg / 60) % 60);
-//     return losMin
-// }
+// // const getTimeInputValue3 = () => new Date(`December 25, 1995 00:00:00`);
 
-// function segundosAHoras(){
-//     var losSeg = sumarSegundos.value;
-//     var lasHor = Math.floor(losSeg / 3600);
-//     return lasHor
-// }
-
-// function minutosAHoras(){
-//     var losMin = sumarMinutos.value;
-//     var lasHor =  Math.floor(losMin / 60)
-//     return lasHor
-// }
+const transHoras = () => getTimeInputValue2().getHours();
+const transMinutos = () => getTimeInputValue2().getMinutes();
+const tranSegundos = () => getTimeInputValue2().getSeconds();
 
 
-// function sumaUsuario(){
-//     if(sumarMinutos.value >= 0){
-//         if(segundos.value >= 0){
-//             let horaSumada = sumarHoras.value;
-//             let minutosSumados = sumarMinutos.value;
-//             let segundosSumados = sumarSegundos.value;
 
-//             horaSumada = (horaSumada < 10)? "0" + horaSumada : horaSumada;
-//             minutosSumados = (minutosSumados < 10)? "0" + minutosSumados : minutosSumados;
-//             segundosSumados = (segundosSumados < 10)? "0" + segundosSumados : segundosSumados; 
+getTimeInputValue3().setHours( horas() + transHoras(), minutos() + transMinutos(), segundos() + tranSegundos())
 
-//             // escribeUsuario.textContent = `Hora Introducida: ${laHora}:${losMinutos}:${losSegundos}`;
-//         }else{
-//             alert("Debe introducir un valor no negativo")
-//             sumarMinutos.value = ""
-//             sumarSegundos.value = ""
-//             // escribeUsuario.textContent = ""
-//         }
-//     }else{
-//         alert("Debe introducir un valor no negativo")
-//         sumarMinutos.value = ""
-//         sumarSegundos.value = ""
-//         // escribeUsuario.textContent = ""
-//     }
-// }
+
 
 //Probando Date
 
-
-
-
-
-
 // var sumarsesion = 5;
 // console.log(fecha.getMinutes() + ":" + (fecha.setMinutes(fecha.getMinutes() + sumarsesion) && fecha.getMinutes()));
-

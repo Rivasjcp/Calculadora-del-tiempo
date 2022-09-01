@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora del tiempo</title>
     <script src="master.js" defer></script>
-    <link rel="shortcut icon" href="images/paso-del-tiempo.png"></head>
-<body>
+    <link rel="shortcut icon" href="images/paso-del-tiempo.png" />
+  </head>
+  <body>
     <h1>Calculadora del tiempo</h1>
-    <div style="display: flex; flex-direction:row">
+    <div style="display: flex; flex-direction: row">
+      <div>
+        <p>Introduce el tiempo</p>
+        <input type="time" id="time-input" step="1" name="time-input" format />
+        <!-- <button id="botonResult">Introducir valores</button> -->
+      </div>
+
+      <div style="margin-left: 100px; display: flex; flex-direction: column;">
         <div>
-            <p>Introduce las horas:</p>
-            <input type="text" name="horas" id="horas" >
-            <p>Introduce los minutos:</p>
-            <input type="text" name="minutos" id="minutos" >
-            <p>Introduce los segundos:</p>
-            <input type="text" name="segundos" id="segundos" >
-            <button class="botonResult">Introducir valores</button>
-            <p class="tiempoUsuario" ></p>
-        </div>
-        <div style="margin-left: 100px;">
-            <!-- <p>Introduce las horas a sumar:</p>
-            <input type="number" name="horas" id="sumaHoras" placeholder="">
-            <p>Introduce los minutos a sumar:</p>
-            <input type="number" name="minutos" id="sumaMinutos" placeholder=""> -->
             <p>Introduce los segundos a sumar:</p>
-            <input type="number" name="segundos" id="sumaSegundos" placeholder="">
-            <button class="transforSeg">Transformar segundos</button>
-            <p class="escribirtrans"></p>
         </div>
+        <div>
+            <input type="number" name="segundos" id="sumaSegundos" placeholder="" />
+            <button class="transforSeg">Transformar segundos</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <input type="time" id="showtime-input" step="1" name="time-input" format />
+        </div>
+
+        
+      </div>
+      
     </div>
-</body>
+    <p id="writeTime"></p>
+      <button id="sumalas">Sumar Horas</button>
+  </body>
 </html>
